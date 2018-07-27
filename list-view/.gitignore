@@ -1,0 +1,14 @@
+/.idea/caches/build_file_checksums.ser
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/build
+/captures
+/local.properties
+
+*.iml
+
+.DS_Store
+.externalNativeBuild
+.gradle
+.gradle/
