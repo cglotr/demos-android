@@ -12,6 +12,6 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         val listView = findViewById<ListView>(R.id.main_listView)
-        listView.adapter = ListViewAdapter(this)
+        listView.adapter = ListViewAdapter()
     }
 }

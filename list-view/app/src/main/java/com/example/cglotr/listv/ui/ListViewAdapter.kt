@@ -1,6 +1,5 @@
 package com.example.cglotr.listv.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,8 @@ import android.widget.TextView
 import com.example.cglotr.listv.R
 import kotlinx.android.synthetic.main.row_view.view.*
 
-class ListViewAdapter(context: Context): BaseAdapter() {
+class ListViewAdapter: BaseAdapter() {
 
-    private val mContext: Context = context
     private val mNames = arrayListOf(
         "1","1"
     )
@@ -41,7 +39,7 @@ class ListViewAdapter(context: Context): BaseAdapter() {
         var rowView = convertView
 
         if (rowView == null) {
-            val layoutInflater = LayoutInflater.from(mContext)
+            val layoutInflater = LayoutInflater.from(parent!!.context)
             rowView = layoutInflater.inflate(R.layout.row_view, parent, false)!!
 
             rowView.tag = ViewHolder(rowView.textView_name, rowView.textView_number)
