@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.cglotr.listv.R
+import kotlinx.android.synthetic.main.row_view.view.*
 
 class ListViewAdapter(context: Context): BaseAdapter() {
 
@@ -43,10 +44,7 @@ class ListViewAdapter(context: Context): BaseAdapter() {
             val layoutInflater = LayoutInflater.from(mContext)
             rowView = layoutInflater.inflate(R.layout.row_view, parent, false)!!
 
-            val nameView = rowView.findViewById<TextView>(R.id.textView_name)
-            val numberView = rowView.findViewById<TextView>(R.id.textView_number)
-
-            rowView.tag = ViewHolder(nameView, numberView)
+            rowView.tag = ViewHolder(rowView.textView_name, rowView.textView_number)
         }
 
         val viewHolder = (rowView.tag as ViewHolder)
