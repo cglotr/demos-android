@@ -1,5 +1,6 @@
 package com.example.cglotr.words.db.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -12,7 +13,7 @@ interface WordDao {
     fun deleteAll(): Any
 
     @Query("SELECT * from word_table ORDER BY word ASC")
-    fun getAllWords(): List<Word>
+    fun getAllWords(): LiveData<List<Word>>
 
     @Insert
     fun insert(word: Word): Any
