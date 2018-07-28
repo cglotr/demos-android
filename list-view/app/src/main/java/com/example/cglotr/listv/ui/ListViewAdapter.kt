@@ -37,15 +37,24 @@ class ListViewAdapter(context: Context): BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val layoutInflater = LayoutInflater.from(mContext)
-        val rowView = layoutInflater.inflate(R.layout.row_view, parent, false)
+        var rowView = convertView
 
-        val nameView = rowView.findViewById<TextView>(R.id.textView_name)
-        nameView.text = "Fibonacci: ${mNames[position]}"
+        if (rowView == null) {
+            val layoutInflater = LayoutInflater.from(mContext)
+            rowView = layoutInflater.inflate(R.layout.row_view, parent, false)!!
 
-        val numberView = rowView.findViewById<TextView>(R.id.textView_number)
-        numberView.text = "Row number: $position"
+            val nameView = rowView.findViewById<TextView>(R.id.textView_name)
+            val numberView = rowView.findViewById<TextView>(R.id.textView_number)
+
+            rowView.tag = ViewHolder(nameView, numberView)
+        }
+
+        val viewHolder = (rowView.tag as ViewHolder)
+        viewHolder.nameView.text = "Fibonacci: ${mNames[position]}"
+        viewHolder.numberView.text = "Row number: $position"
 
         return rowView
     }
+
+    private class ViewHolder(val nameView: TextView, val numberView: TextView)
 }
